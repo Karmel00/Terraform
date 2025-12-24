@@ -1,0 +1,19 @@
+Name: CI
+
+on: [push]
+
+jobs:
+  terrafrom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.7.0
+
+      - name: formatting terraform code
+        run: terraform fmt -check
+        
+      - name: checking the code
+        run: terraform validate
