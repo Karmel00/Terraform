@@ -11,6 +11,10 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.7.0
+      
+      - name: Terraform Init
+        working-directory: env/dev
+        run: terraform init
 
       - name: formatting terraform code
         working-directory: env/dev
