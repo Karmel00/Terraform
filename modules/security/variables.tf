@@ -1,11 +1,7 @@
-#VPC MODULE
-variable "cidr_block" {}
-variable "cidr_block_s1" {}
-variable "cidr_block_s2" {}
-variable "az_1a" {}
-variable "az_1b" {}
+variable "vpc_id" {
+  type = string
+}
 
-#SECURITY MODULE
 variable "sg_ingress" {
   type = list(object({
     internal = number
@@ -22,3 +18,7 @@ variable "sg_egress" {
   }))
 }
 
+variable "env" {
+  description = "env tag"
+  type        = string
+}
