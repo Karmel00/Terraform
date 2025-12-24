@@ -13,7 +13,9 @@ jobs:
           terraform_version: 1.7.0
 
       - name: formatting terraform code
+        working-directory: env/dev
         run: terraform fmt -check
         
       - name: checking the code
+        working-directory: env/dev
         run: terraform validate
