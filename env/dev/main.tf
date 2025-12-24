@@ -10,8 +10,8 @@ module "vpc" {
 
 module "security" {
   source     = "../../modules/security"
-  vpc_id = module.vpc.vpc_id
+  vpc_id     = module.vpc.vpc_id
   sg_ingress = var.sg_ingress
   sg_egress  = var.sg_egress
-  env = "dev"
+  env        = "dev"
 }
