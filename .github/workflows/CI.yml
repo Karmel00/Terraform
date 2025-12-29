@@ -18,13 +18,13 @@ jobs:
           terraform_version: 1.7.0
       
       - name: Terraform Init
-        working-directory: env/dev
+        working-directory: terraform/env/dev
         run: terraform init
 
       - name: formatting terraform code
-        working-directory: env/dev
+        working-directory: terraform/env/dev
         run: terraform fmt -check
         
       - name: checking the code
-        working-directory: env/dev
+        working-directory: terraform/env/dev
         run: terraform validate
