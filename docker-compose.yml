@@ -1,0 +1,14 @@
+services:
+  api:
+    build: ./app/
+    container_name: fastapi
+    ports:
+      - "80:80"
+  
+  nginx:
+    image: nginx:1.29.4
+    container_name: nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
