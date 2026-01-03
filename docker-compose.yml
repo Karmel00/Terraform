@@ -1,6 +1,6 @@
 services:
   api:
-    build: ./app/
+    image: karmel00/fastapi
     container_name: fastapi
     ports:
       - "80:80"
