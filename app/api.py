@@ -12,4 +12,8 @@ def read_root():
 def health():
     return {"status":"ok"}
 
+@app.get("/readiness")
+def readiness():
+    return {"status":"ready"}
+
 

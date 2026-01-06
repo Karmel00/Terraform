@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: karmel00/fastapi:amdv1
+        image: karmel00/fastapi:amdv2
         resources:
           requests:
             memory: "64Mi"
