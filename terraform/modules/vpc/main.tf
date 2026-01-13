@@ -17,8 +17,8 @@ resource "aws_subnet" "public_1" {
   cidr_block              = var.cidr_block_s1
 
   tags = {
-    Name = "${var.env}-sub_public_1"
-    Env  = var.env
+    Name                                = "${var.env}-sub_public_1"
+    Env                                 = var.env
     "kubernetes.io/cluster/dev-cluster" = "shared"
   }
 
@@ -31,8 +31,8 @@ resource "aws_subnet" "public_2" {
   cidr_block              = var.cidr_block_s2
 
   tags = {
-    Name = "${var.env}-sub_public2"
-    Env  = var.env
+    Name                                = "${var.env}-sub_public2"
+    Env                                 = var.env
     "kubernetes.io/cluster/dev-cluster" = "shared"
   }
 
@@ -40,39 +40,39 @@ resource "aws_subnet" "public_2" {
 
 # PRIVATE SUBNET
 resource "aws_subnet" "private_1" {
-  vpc_id                  = aws_vpc.main.id
-  availability_zone       = var.az_1a
-  cidr_block              = var.cidr_block_sp1
+  vpc_id            = aws_vpc.main.id
+  availability_zone = var.az_1a
+  cidr_block        = var.cidr_block_sp1
 
   tags = {
-    Name = "${var.env}-sub_private1"
-    Env  = var.env
+    Name                                = "${var.env}-sub_private1"
+    Env                                 = var.env
     "kubernetes.io/cluster/dev-cluster" = "shared"
   }
 
 }
 
 resource "aws_subnet" "private_2" {
-  vpc_id                  = aws_vpc.main.id
-  availability_zone       = var.az_1b
-  cidr_block              = var.cidr_block_sp2
+  vpc_id            = aws_vpc.main.id
+  availability_zone = var.az_1b
+  cidr_block        = var.cidr_block_sp2
 
   tags = {
-    Name = "${var.env}-sub_private2"
-    Env  = var.env
+    Name                                = "${var.env}-sub_private2"
+    Env                                 = var.env
     "kubernetes.io/cluster/dev-cluster" = "shared"
   }
 
 }
 
 resource "aws_subnet" "private_3" {
-  vpc_id                  = aws_vpc.main.id
-  availability_zone       = var.az_1c
-  cidr_block              = var.cidr_block_sp3
+  vpc_id            = aws_vpc.main.id
+  availability_zone = var.az_1c
+  cidr_block        = var.cidr_block_sp3
 
   tags = {
-    Name = "${var.env}-sub_private3"
-    Env  = var.env
+    Name                                = "${var.env}-sub_private3"
+    Env                                 = var.env
     "kubernetes.io/cluster/dev-cluster" = "shared"
   }
 
@@ -99,7 +99,7 @@ resource "aws_nat_gateway" "nat" {
   }
 
   depends_on = [aws_internet_gateway.gateway]
-  
+
 }
 #EIP FOR NAT
 resource "aws_eip" "eip" {
