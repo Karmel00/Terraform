@@ -9,22 +9,6 @@ variable "az_1a" {}
 variable "az_1b" {}
 variable "az_1c" {}
 
-#SECURITY MODULE
-variable "sg_ingress" {
-  type = list(object({
-    internal = number
-    external = number
-    protocol = string
-  }))
-}
-
-variable "sg_egress" {
-  type = list(object({
-    internal = number
-    external = number
-    protocol = string
-  }))
-}
 
 #EKS
 variable "eks_name" {

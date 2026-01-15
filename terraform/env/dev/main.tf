@@ -12,14 +12,6 @@ module "vpc" {
   env            = "dev"
 }
 
-module "security" {
-  source     = "../../modules/security"
-  vpc_id     = module.vpc.vpc_id
-  sg_ingress = var.sg_ingress
-  sg_egress  = var.sg_egress
-  env        = "dev"
-}
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
