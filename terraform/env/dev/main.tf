@@ -24,9 +24,9 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  name               = "dev-cluster"
+  name               = var.eks_name
   kubernetes_version = "1.33"
-  # TO DO: add metics server for hpa
+
   addons = {
     coredns = {}
     eks-pod-identity-agent = {
@@ -48,12 +48,12 @@ module "eks" {
 
   eks_managed_node_groups = {
     workers = {
-      ami_type       = "AL2023_x86_64_STANDARD"
-      instance_types = ["t3.small"]
+      ami_type       = var.eks_ami
+      instance_types = [var.eks_instance_type]
 
-      min_size     = 2
-      max_size     = 4
-      desired_size = 2
+      min_size     = var.eks_min_size
+      max_size     = var.eks_max_size
+      desired_size = var.eks_desired_size
     }
   }
 

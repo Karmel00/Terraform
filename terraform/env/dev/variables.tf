@@ -26,3 +26,23 @@ variable "sg_egress" {
   }))
 }
 
+#EKS
+variable "eks_name" {
+  description = "eks cluster name"
+}
+
+variable "eks_ami" {
+  description = "eks ami type"
+}
+variable "eks_instance_type" {
+  description = "eks instance type"
+}
+variable "eks_min_size" {
+  description = "eks min size"
+}
+variable "eks_max_size" {
+  description = "eks max size"
+}
+variable "eks_desired_size" {
+  description = "eks desired size"
+}
