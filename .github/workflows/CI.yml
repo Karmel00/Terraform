@@ -1,15 +1,14 @@
 name: CI
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+        - main
+  pull_request:
 
 jobs:
   terrafrom:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-      AWS_DEFAULT_REGION: eu-central-1
-
     steps:
       - uses: actions/checkout@v3
       - name: Setup Terraform
@@ -19,7 +18,7 @@ jobs:
       
       - name: Terraform Init
         working-directory: terraform/env/dev
-        run: terraform init
+        run: terraform init -backend=false
 
       - name: formatting terraform code
         working-directory: terraform/env/dev
@@ -28,3 +27,18 @@ jobs:
       - name: checking the code
         working-directory: terraform/env/dev
         run: terraform validate
+    
+  kubernetes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: Validate K8s manifests
+        uses: docker://ghcr.io/yannh/kubeconform:latest
+        with:
+          entrypoint: '/kubeconform'
+          args: "-summary -output text k8s/"
