@@ -60,10 +60,15 @@ jobs:
           kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
           kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.14.0/deploy/static/provider/cloud/deploy.yaml
 
+      - name: apply namespace
+        working-directory: k8s/
+        run: kubectl apply -f namespaces.yaml
+
       # secret tls is created imperatvley to read github secret
       - name: apply base manifests
         working-directory: k8s/
         run: |
+          
           kubectl create secret tls tls-secret \
             --cert=<(echo "${{ secrets.TLS_CERT }}") \
             --key=<(echo "${{ secrets.TLS_KEY }}") \
