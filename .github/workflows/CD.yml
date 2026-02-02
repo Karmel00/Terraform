@@ -25,6 +25,10 @@ jobs:
         working-directory: terraform/env/dev
         run: terraform init
 
+      - name: Terraform plan
+        working-directory: terraform/env/dev
+        run: terraform plan
+
       - name: terraform apply infrastucture
         working-directory: terraform/env/dev
         run: terraform apply -auto-approve
